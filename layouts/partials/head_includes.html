@@ -11,34 +11,7 @@
 {{ end }}
 
 <!-- CSS -->
-
-{{ if .Site.Params.highlightjs }}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/{{ .Site.Params.highlightjsStyle | default "default" }}.min.css">
-{{ end }}
-
-<!-- Fonts and icon CSS -->
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
-
-{{ if .Site.Params.cachebuster }}
-
-    <link rel="stylesheet" href="/css/reset.css?md5={{ md5 (readFile "themes/cocoa/static/css/reset.css") }}">
-    <link rel="stylesheet" href="/css/pygments.css?md5={{ md5 (readFile "themes/cocoa/static/css/pygments.css") }}">
-    <link rel="stylesheet" href="/css/main.css?md5={{ md5 (readFile "themes/cocoa/static/css/main.css") }}">
-    {{range .Site.Params.extracssfiles}}
-        <link rel="stylesheet" href="{{.}}?md5={{ md5 (readFile (printf "static/%s" .)) }}">
-    {{ end }}
-
-{{ else }}
-
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/pygments.css">
-    <link rel="stylesheet" href="/css/main.css">
-    {{range .Site.Params.extracssfiles}}
-        <link rel="stylesheet" href="{{.}}">
-    {{end}}
-
-{{ end }}
+{{ partialCached "css_includes.html" . }}
 
 <!-- Icon -->
 <link rel="shortcut icon"
