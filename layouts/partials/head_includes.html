@@ -22,12 +22,11 @@
 
 {{ if .Site.Params.cachebuster }}
 
-    {{ $t := now }}
-    <link rel="stylesheet" href="/css/reset.css?t={{$t}}">
-    <link rel="stylesheet" href="/css/pygments.css?t={{$t}}">
-    <link rel="stylesheet" href="/css/main.css?t={{$t}}">
+    <link rel="stylesheet" href="/css/reset.css?md5={{ md5 (readFile "themes/cocoa/static/css/reset.css") }}">
+    <link rel="stylesheet" href="/css/pygments.css?md5={{ md5 (readFile "themes/cocoa/static/css/pygments.css") }}">
+    <link rel="stylesheet" href="/css/main.css?md5={{ md5 (readFile "themes/cocoa/static/css/main.css") }}">
     {{range .Site.Params.extracssfiles}}
-        <link rel="stylesheet" href="{{.}}?t={{$t}}">
+        <link rel="stylesheet" href="{{.}}?md5={{ md5 (readFile (printf "static/%s" .)) }}">
     {{ end }}
 
 {{ else }}
