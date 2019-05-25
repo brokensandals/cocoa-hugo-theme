@@ -690,6 +690,10 @@ section.main .content .markdown abbr[title] {
   cursor: help;
   border-bottom: 1px dotted #808080;
 }
+section.main .content .markdown sup {
+  font-size: 80%;
+  vertical-align: super;
+}
 section.main .content .markdown blockquote {
   padding: 0.5rem 1rem;
   margin: 0.8rem 0;
